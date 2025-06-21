@@ -1,22 +1,14 @@
 
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import HowItWorks from "@/components/HowItWorks";
-import Features from "@/components/Features";
-import Testimonials from "@/components/Testimonials";
-import CTA from "@/components/CTA";
-import Footer from "@/components/Footer";
+import BottomNav from "@/components/BottomNav";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-50">
       <Header />
       <Hero />
-      <HowItWorks />
-      <Features />
-      <Testimonials />
-      <CTA />
-      <Footer />
+      <BottomNav />
     </div>
   );
 };

@@ -1,38 +1,25 @@
 
-import { Music } from "lucide-react";
+import { Music, MessageCircle, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Header = () => {
   return (
-    <header className="bg-white/95 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="bg-white sticky top-0 z-50 border-b border-gray-200 shadow-sm">
+      <div className="max-w-md mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-2">
             <div className="relative">
-              <Music className="h-8 w-8 text-green-600 music-note-bounce" />
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-secondary rounded-full animate-pulse"></div>
+              <Music className="h-7 w-7 text-green-500" />
             </div>
-            <span className="text-2xl font-bold text-gradient">MusicBuds</span>
+            <span className="text-xl font-bold text-gray-900">MusicBuds</span>
           </div>
           
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="#how-it-works" className="text-gray-700 hover:text-green-600 transition-colors">
-              How it Works
-            </a>
-            <a href="#features" className="text-gray-700 hover:text-green-600 transition-colors">
-              Features
-            </a>
-            <a href="#testimonials" className="text-gray-700 hover:text-green-600 transition-colors">
-              Stories
-            </a>
-          </nav>
-          
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" className="text-gray-700 hover:text-green-600">
-              Sign In
+            <Button variant="ghost" size="icon" className="text-gray-600">
+              <MessageCircle className="h-5 w-5" />
             </Button>
-            <Button className="gradient-primary text-white border-0 hover:opacity-90 transition-opacity">
-              Join Now
+            <Button variant="ghost" size="icon" className="text-gray-600">
+              <User className="h-5 w-5" />
             </Button>
           </div>
         </div>
