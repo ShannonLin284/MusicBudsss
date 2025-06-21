@@ -1,5 +1,5 @@
 
-import { Heart, X, MapPin, Music, Calendar } from "lucide-react";
+import { Heart, X, MapPin, Music, Calendar, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface ProfileCardProps {
@@ -57,12 +57,13 @@ const ProfileCard = ({ name, age, location, favoriteArtists, upcomingConcerts, b
         <div>
           <div className="flex items-center mb-2">
             <Calendar className="h-4 w-4 text-green-500 mr-2" />
-            <span className="text-sm font-semibold text-gray-900">Going To</span>
+            <span className="text-sm font-semibold text-gray-900">Wants to Go To</span>
           </div>
           <div className="space-y-2">
             {upcomingConcerts.map((concert, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg p-2">
-                <span className="text-sm text-gray-700">{concert}</span>
+              <div key={index} className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+                <span className="text-sm text-gray-700 font-medium">{concert}</span>
+                <div className="text-xs text-gray-500 mt-1">🎫 Looking for tickets together!</div>
               </div>
             ))}
           </div>
@@ -82,7 +83,7 @@ const ProfileCard = ({ name, age, location, favoriteArtists, upcomingConcerts, b
           size="lg" 
           className="rounded-full w-14 h-14 bg-green-500 hover:bg-green-600"
         >
-          <Heart className="h-6 w-6 text-white" />
+          <Users className="h-6 w-6 text-white" />
         </Button>
       </div>
     </div>
