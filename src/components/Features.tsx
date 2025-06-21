@@ -7,42 +7,42 @@ const Features = () => {
       icon: Shield,
       title: "Safe & Verified",
       description: "All users are verified to ensure a safe and trustworthy community of music lovers.",
-      gradient: "from-purple-500 to-purple-600"
+      gradient: "from-green-500 to-green-600"
     },
     {
       icon: MapPin,
       title: "Location-Based",
       description: "Find concert buddies in your city or when traveling to new places for shows.",
-      gradient: "from-pink-500 to-pink-600"
+      gradient: "from-emerald-500 to-emerald-600"
     },
     {
       icon: Star,
       title: "Music Matching",
       description: "Our algorithm matches you with people who love the same genres and artists you do.",
-      gradient: "from-blue-500 to-blue-600"
+      gradient: "from-lime-500 to-lime-600"
     },
     {
       icon: Clock,
       title: "Real-Time Chat",
       description: "Instant messaging to coordinate meetups, share excitement, and make plans.",
-      gradient: "from-green-500 to-green-600"
+      gradient: "from-teal-500 to-teal-600"
     },
     {
       icon: Zap,
       title: "Quick Connections",
       description: "Fast and easy way to connect with like-minded people for any upcoming show.",
-      gradient: "from-yellow-500 to-orange-500"
+      gradient: "from-cyan-500 to-green-500"
     },
     {
       icon: Heart,
       title: "Build Friendships",
       description: "Many of our users form lasting friendships that extend beyond just concerts.",
-      gradient: "from-red-500 to-pink-500"
+      gradient: "from-emerald-500 to-lime-500"
     }
   ];
 
   return (
-    <section id="features" className="py-20 bg-gradient-to-br from-gray-50 to-purple-50">
+    <section id="features" className="py-20 bg-gradient-to-br from-gray-50 to-green-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">

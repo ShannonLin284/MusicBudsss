@@ -7,25 +7,25 @@ const HowItWorks = () => {
       icon: Search,
       title: "Find Events",
       description: "Browse upcoming concerts in your area or search for specific artists and venues you love.",
-      color: "bg-purple-100 text-purple-600"
+      color: "bg-green-100 text-green-600"
     },
     {
       icon: Users,
       title: "Connect with Buddies",
       description: "See who else is going and connect with music lovers who share your taste and vibe.",
-      color: "bg-pink-100 text-pink-600"
+      color: "bg-emerald-100 text-emerald-600"
     },
     {
       icon: MessageCircle,
       title: "Chat & Plan",
       description: "Message your potential concert buddies, share excitement, and plan your perfect night out.",
-      color: "bg-blue-100 text-blue-600"
+      color: "bg-lime-100 text-lime-600"
     },
     {
       icon: Music,
       title: "Experience Together",
       description: "Attend the show with your new friends and create unforgettable memories together.",
-      color: "bg-green-100 text-green-600"
+      color: "bg-teal-100 text-teal-600"
     }
   ];
 
@@ -60,7 +60,7 @@ const HowItWorks = () => {
         
         {/* Connection lines for desktop */}
         <div className="hidden lg:block relative mt-8">
-          <div className="absolute top-0 left-1/4 right-1/4 h-0.5 bg-gradient-to-r from-purple-300 via-pink-300 to-green-300 opacity-30"></div>
+          <div className="absolute top-0 left-1/4 right-1/4 h-0.5 bg-gradient-to-r from-green-300 via-emerald-300 to-teal-300 opacity-30"></div>
         </div>
       </div>
     </section>

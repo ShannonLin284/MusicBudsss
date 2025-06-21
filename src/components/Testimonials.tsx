@@ -46,7 +46,7 @@ const Testimonials = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 relative group hover:shadow-lg transition-all duration-300">
+            <div key={index} className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 relative group hover:shadow-lg transition-all duration-300">
               <div className="absolute -top-4 left-8">
                 <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center">
                   <Music className="h-6 w-6 text-white" />
@@ -73,7 +73,7 @@ const Testimonials = () => {
                   <div className="flex-1">
                     <h4 className="font-bold text-gray-900">{testimonial.name}, {testimonial.age}</h4>
                     <p className="text-gray-600 text-sm">{testimonial.location}</p>
-                    <p className="text-purple-600 text-sm font-medium">{testimonial.concertCount} concerts attended</p>
+                    <p className="text-green-600 text-sm font-medium">{testimonial.concertCount} concerts attended</p>
                   </div>
                 </div>
               </div>

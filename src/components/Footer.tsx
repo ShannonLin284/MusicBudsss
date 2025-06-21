@@ -9,7 +9,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <Music className="h-8 w-8 text-purple-400" />
+              <Music className="h-8 w-8 text-green-400" />
               <span className="text-2xl font-bold">MusicBuds</span>
             </div>
             <p className="text-gray-400 mb-6 max-w-md">
@@ -17,13 +17,13 @@ const Footer = () => {
               Never go to a show alone again.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
+              <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
                 <Instagram className="h-6 w-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
+              <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
                 <Twitter className="h-6 w-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
+              <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
                 <Facebook className="h-6 w-6" />
               </a>
             </div>

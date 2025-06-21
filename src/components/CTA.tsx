@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 const CTA = () => {
   return (
-    <section className="py-20 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0">
         <div className="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full animate-pulse"></div>
@@ -31,7 +31,7 @@ const CTA = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100 transition-colors text-lg px-8 py-4 font-semibold">
+          <Button size="lg" className="bg-white text-green-600 hover:bg-gray-100 transition-colors text-lg px-8 py-4 font-semibold">
             Get Started Free
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
