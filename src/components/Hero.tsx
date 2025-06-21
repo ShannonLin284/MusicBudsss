@@ -25,23 +25,7 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-md mx-auto px-4">
-        <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">
-            Find Your Concert Buddy
-          </h1>
-          <p className="text-gray-600">
-            Connect with music lovers and buy tickets together
-          </p>
-          <div className="mt-4 bg-green-50 border border-green-200 rounded-lg p-3">
-            <div className="flex items-center justify-center space-x-2 text-green-700">
-              <span className="text-2xl">🎤</span>
-              <span className="text-sm font-medium">Two friends at a concert together!</span>
-              <span className="text-2xl">🎵</span>
-            </div>
-          </div>
-        </div>
-        
+      <div className="max-w-md mx-auto px-4">        
         <div className="space-y-6">
           {sampleProfiles.map((profile, index) => (
             <ProfileCard key={index} {...profile} />

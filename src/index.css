@@ -38,19 +38,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -105,19 +98,19 @@
 
 @layer utilities {
   .gradient-primary {
-    background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+    background: linear-gradient(135deg, #166534 0%, #15803d 100%);
   }
   
   .gradient-secondary {
-    background: linear-gradient(135deg, #86efac 0%, #4ade80 100%);
+    background: linear-gradient(135deg, #15803d 0%, #166534 100%);
   }
   
   .gradient-accent {
-    background: linear-gradient(135deg, #a7f3d0 0%, #6ee7b7 100%);
+    background: linear-gradient(135deg, #14532d 0%, #166534 100%);
   }
   
   .text-gradient {
-    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+    background: linear-gradient(135deg, #15803d 0%, #14532d 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -145,10 +138,10 @@
   
   @keyframes pulseGlow {
     0%, 100% {
-      box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+      box-shadow: 0 0 20px rgba(21, 128, 61, 0.3);
     }
     50% {
-      box-shadow: 0 0 40px rgba(34, 197, 94, 0.6);
+      box-shadow: 0 0 40px rgba(21, 128, 61, 0.6);
     }
   }
 }
