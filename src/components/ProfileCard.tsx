@@ -1,6 +1,7 @@
 
 import { Heart, X, MapPin, Music, Calendar, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 interface ProfileCardProps {
   name: string;
@@ -13,6 +14,12 @@ interface ProfileCardProps {
 }
 
 const ProfileCard = ({ name, age, location, favoriteArtists, upcomingConcerts, bio, photos }: ProfileCardProps) => {
+  const navigate = useNavigate();
+
+  const handleConnect = () => {
+    navigate("/messages");
+  };
+
   return (
     <div className="bg-white rounded-2xl shadow-lg overflow-hidden max-w-sm mx-auto">
       {/* Photo */}
@@ -81,6 +88,7 @@ const ProfileCard = ({ name, age, location, favoriteArtists, upcomingConcerts, b
         </Button>
         <Button 
           size="lg" 
+          onClick={handleConnect}
           className="rounded-full w-14 h-14 bg-green-800 hover:bg-green-900"
         >
           <Users className="h-6 w-6 text-white" />

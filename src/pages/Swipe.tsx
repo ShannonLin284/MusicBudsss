@@ -9,22 +9,35 @@ const Swipe = () => {
   const concert = location.state?.concert || "Your Concert";
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      <div className="pt-4 pb-20">
-        <div className="max-w-md mx-auto px-4">
-          <div className="text-center mb-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-2">
-              People going to: {concert}
-            </h2>
-            <p className="text-sm text-gray-600">
-              Swipe right to connect!
-            </p>
-          </div>
-        </div>
-        <Hero />
+    <div className="min-h-screen relative">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url(https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1920&h=1080&fit=crop&crop=center)',
+        }}
+      >
+        <div className="absolute inset-0 bg-black/40"></div>
       </div>
-      <BottomNav />
+      
+      {/* Content */}
+      <div className="relative z-10">
+        <Header />
+        <div className="pt-4 pb-20">
+          <div className="max-w-md mx-auto px-4">
+            <div className="text-center mb-6">
+              <h2 className="text-lg font-semibold text-white mb-2">
+                People going to: {concert}
+              </h2>
+              <p className="text-sm text-white/90">
+                Swipe right to connect!
+              </p>
+            </div>
+          </div>
+          <Hero />
+        </div>
+        <BottomNav />
+      </div>
     </div>
   );
 };
