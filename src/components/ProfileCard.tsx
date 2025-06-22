@@ -11,9 +11,10 @@ interface ProfileCardProps {
   upcomingConcerts: string[];
   bio: string;
   photos: string[];
+  onDelete: () => void;
 }
 
-const ProfileCard = ({ name, age, location, favoriteArtists, upcomingConcerts, bio, photos }: ProfileCardProps) => {
+const ProfileCard = ({ name, age, location, favoriteArtists, upcomingConcerts, bio, photos, onDelete }: ProfileCardProps) => {
   const navigate = useNavigate();
 
   const handleConnect = () => {
@@ -82,6 +83,7 @@ const ProfileCard = ({ name, age, location, favoriteArtists, upcomingConcerts, b
         <Button 
           size="lg" 
           variant="outline" 
+          onClick={onDelete}
           className="rounded-full w-14 h-14 border-gray-300 hover:border-red-300 hover:bg-red-50"
         >
           <X className="h-6 w-6 text-gray-500" />

@@ -7,7 +7,7 @@ const Header = () => {
     <header className="bg-white sticky top-0 z-50 border-b border-gray-200 shadow-sm">
       <div className="max-w-md mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-1">
+          <div className="flex items-center">
             <span className="text-2xl">🎵</span>
             <span className="text-xl font-bold text-gray-900">usicBuds</span>
           </div>
