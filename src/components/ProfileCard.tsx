@@ -18,7 +18,11 @@ const ProfileCard = ({ name, age, location, favoriteArtists, upcomingConcerts, b
   const navigate = useNavigate();
 
   const handleConnect = () => {
-    navigate("/messages");
+    navigate("/direct-message", { 
+      state: { 
+        person: { name, age, location, favoriteArtists, upcomingConcerts, bio, photos }
+      }
+    });
   };
 
   return (

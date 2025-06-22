@@ -26,12 +26,9 @@ const Swipe = () => {
         <div className="pt-4 pb-20">
           <div className="max-w-md mx-auto px-4">
             <div className="text-center mb-6">
-              <h2 className="text-lg font-semibold text-white mb-2">
+              <h2 className="text-2xl font-bold text-white mb-2">
                 People going to: {concert}
               </h2>
-              <p className="text-sm text-white/90">
-                Swipe right to connect!
-              </p>
             </div>
           </div>
           <Hero />

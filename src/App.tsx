@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Swipe from "./pages/Swipe";
 import Messages from "./pages/Messages";
+import DirectMessage from "./pages/DirectMessage";
+import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -21,6 +23,8 @@ const App = () => (
           <Route path="/" element={<Home />} />
           <Route path="/swipe" element={<Swipe />} />
           <Route path="/messages" element={<Messages />} />
+          <Route path="/direct-message" element={<DirectMessage />} />
+          <Route path="/profile" element={<Profile />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
