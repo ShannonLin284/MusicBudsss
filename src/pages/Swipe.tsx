@@ -9,24 +9,14 @@ const Swipe = () => {
   const concert = location.state?.concert || "Your Concert";
 
   return (
-    <div className="min-h-screen relative">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1920&h=1080&fit=crop&crop=center)',
-        }}
-      >
-        <div className="absolute inset-0 bg-black/40"></div>
-      </div>
-      
+    <div className="min-h-screen bg-green-800">
       {/* Content */}
       <div className="relative z-10">
         <Header />
         <div className="pt-4 pb-20">
           <div className="max-w-md mx-auto px-4">
             <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-white mb-2">
+              <h2 className="text-3xl font-bold text-white mb-2">
                 People going to: {concert}
               </h2>
             </div>

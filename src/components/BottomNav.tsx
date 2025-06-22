@@ -37,7 +37,12 @@ const BottomNav = () => {
           >
             <MessageCircle className="h-6 w-6" />
           </Button>
-          <Button variant="ghost" size="icon" className="text-gray-400">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            onClick={() => navigate("/profile")}
+            className={isActive("/profile") ? "text-green-800" : "text-gray-400"}
+          >
             <User className="h-6 w-6" />
           </Button>
         </div>

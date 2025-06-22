@@ -15,10 +15,12 @@ const Header = () => {
               width="24" 
               height="24" 
               viewBox="0 0 24 24" 
-              className="text-green-800 mr-1"
+              className="text-green-800 mr-2"
               fill="currentColor"
             >
-              <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+              <path d="M12 2v12.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V6h4V2h-6z" rx="2"/>
+              <circle cx="16" cy="4" r="1.5"/>
+              <circle cx="18" cy="6" r="1.5"/>
             </svg>
             <span className="text-xl font-bold text-gray-900">usicBuds</span>
           </div>

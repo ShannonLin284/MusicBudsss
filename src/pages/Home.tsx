@@ -19,11 +19,11 @@ const Home = () => {
     <div className="min-h-screen bg-gray-50">
       <Header />
       
-      {/* Hero Section with Image */}
+      {/* Hero Section with ACL Image */}
       <div className="relative h-screen">
         <img 
-          src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=1200&h=800&fit=crop" 
-          alt="Two friends having fun at a concert"
+          src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1200&h=800&fit=crop" 
+          alt="Austin City Limits Music Festival crowd"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/40"></div>
@@ -39,7 +39,9 @@ const Home = () => {
                 className="text-white mr-2"
                 fill="currentColor"
               >
-                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                <path d="M12 2v12.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V6h4V2h-6z" rx="2"/>
+                <circle cx="16" cy="4" r="1.5"/>
+                <circle cx="18" cy="6" r="1.5"/>
               </svg>
               <h1 className="text-4xl font-bold">usicBuds</h1>
             </div>
