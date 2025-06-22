@@ -26,7 +26,7 @@ const ProfileCard = ({ name, age, location, favoriteArtists, upcomingConcerts, b
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg overflow-hidden max-w-sm mx-auto">
+    <div className="bg-white rounded-2xl shadow-xl border-2 border-white overflow-hidden max-w-sm mx-auto" style={{boxShadow: '0 20px 40px rgba(0,0,0,0.3), 0 0 0 2px rgba(255,255,255,0.8)'}}>
       {/* Photo */}
       <div className="relative h-96">
         <img 

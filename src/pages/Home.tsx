@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
-import BottomNav from "@/components/BottomNav";
 
 const Home = () => {
   const [concert, setConcert] = useState("");
@@ -22,7 +21,7 @@ const Home = () => {
       {/* Hero Section with ACL Image */}
       <div className="relative h-screen">
         <img 
-          src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1200&h=800&fit=crop" 
+          src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=1200&h=800&fit=crop" 
           alt="Austin City Limits Music Festival crowd"
           className="w-full h-full object-cover"
         />
@@ -36,17 +35,17 @@ const Home = () => {
                 width="32" 
                 height="32" 
                 viewBox="0 0 24 24" 
-                className="text-white mr-2"
+                className="text-white mr-1"
                 fill="currentColor"
               >
-                <path d="M12 2v12.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V6h4V2h-6z" rx="2"/>
-                <circle cx="16" cy="4" r="1.5"/>
-                <circle cx="18" cy="6" r="1.5"/>
+                <path d="M12 2C10.9 2 10 2.9 10 4v8.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V8h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2h-4z" rx="3"/>
+                <circle cx="16" cy="6" r="2"/>
+                <circle cx="18" cy="8" r="2"/>
               </svg>
               <h1 className="text-4xl font-bold">usicBuds</h1>
             </div>
             <p className="text-xl mb-8">
-              Never go to concerts alone again. Find your perfect concert buddy!
+              Tired of skipping out on concerts because you don't have a buddy? find ur bud here!
             </p>
             
             {/* Concert Input */}
@@ -68,13 +67,11 @@ const Home = () => {
               disabled={!concert.trim()}
               className="w-full bg-green-800 hover:bg-green-900 text-white py-3 text-lg font-semibold rounded-lg"
             >
-              Find Concert Buddies
+              Find Concert Buds
             </Button>
           </div>
         </div>
       </div>
-      
-      <BottomNav />
     </div>
   );
 };

@@ -1,36 +1,62 @@
 
 import Header from "@/components/Header";
-import BottomNav from "@/components/BottomNav";
 import { MessageCircle, Calendar } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Messages = () => {
+  const navigate = useNavigate();
+  
   const matches = [
     {
       name: "Emma",
       concert: "Taylor Swift - MetLife Stadium",
       lastMessage: "Hey! Ready to buy those tickets together?",
       time: "2m ago",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=100&h=100&fit=crop",
+      age: 26,
+      location: "Brooklyn, NY",
+      favoriteArtists: ["Taylor Swift", "Phoebe Bridgers", "Lorde"],
+      upcomingConcerts: ["Taylor Swift - MetLife Stadium", "Vampire Weekend - Brooklyn Steel"],
+      bio: "Indie pop enthusiast looking for concert buddies!",
+      photos: ["https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=600&fit=crop"]
     },
     {
       name: "Marcus",
       concert: "ACL Festival",
       lastMessage: "Found some great spots! Let's chat about it",
       time: "1h ago",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1492447166138-50c3889fccb1?w=100&h=100&fit=crop",
+      age: 29,
+      location: "Austin, TX",
+      favoriteArtists: ["Kendrick Lamar", "Tyler Cole", "Mac Miller"],
+      upcomingConcerts: ["ACL Festival", "Travis Scott - Moody Center"],
+      bio: "Hip-hop head and festival lover.",
+      photos: ["https://images.unsplash.com/photo-1492447166138-50c3889fccb1?w=400&h=600&fit=crop"]
     }
   ];
+
+  const handleMatchClick = (match: any) => {
+    navigate("/direct-message", { 
+      state: { 
+        person: match
+      }
+    });
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
-      <div className="pt-4 pb-20">
+      <div className="pt-4 pb-8">
         <div className="max-w-md mx-auto px-4">
           <h1 className="text-2xl font-bold text-gray-900 mb-6">Messages</h1>
           
           <div className="space-y-4">
             {matches.map((match, index) => (
-              <div key={index} className="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
+              <div 
+                key={index} 
+                className="bg-white rounded-lg p-4 shadow-sm border border-gray-200 cursor-pointer hover:bg-gray-50 transition-colors"
+                onClick={() => handleMatchClick(match)}
+              >
                 <div className="flex items-start space-x-3">
                   <img 
                     src={match.avatar} 
@@ -61,7 +87,6 @@ const Messages = () => {
           )}
         </div>
       </div>
-      <BottomNav />
     </div>
   );
 };
