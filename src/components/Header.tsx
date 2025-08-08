@@ -14,20 +14,24 @@ const Header = () => {
       <div className="max-w-md mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center cursor-pointer" onClick={() => navigate("/")}>
-            <svg 
-              width="28" 
-              height="28" 
-              viewBox="0 0 24 24" 
-              className="text-purple-300 mr-2"
-              fill="currentColor"
-            >
-              {/* Music note styled M */}
-              <path d="M8 3h8c.55 0 1 .45 1 1v12c0 1.66-1.34 3-3 3s-3-1.34-3-3V8H8c-.55 0-1-.45-1-1s.45-1 1-1z" />
-              <circle cx="6" cy="15" r="3" />
-              <path d="M11 12v4c0 1.66 1.34 3 3 3s3-1.34 3-3-1.34-3-3-3c-.35 0-.69.06-1 .17V12z" />
-              <circle cx="14" cy="16" r="2" />
-            </svg>
-            <span className="text-xl font-bold text-white">usicBuds</span>
+            <div className="flex items-baseline">
+              <svg 
+                width="24" 
+                height="32" 
+                viewBox="0 0 24 32" 
+                className="text-purple-300 mr-0"
+                fill="currentColor"
+              >
+                {/* Sixteenth note with slanted beams forming an M shape */}
+                <circle cx="6" cy="24" r="4" />
+                <circle cx="18" cy="24" r="4" />
+                <path d="M10 24 L10 6 L14 4 L14 24 M18 24 L18 6 L22 4 L22 24" stroke="currentColor" strokeWidth="2" fill="none" />
+                {/* Double beams slanted */}
+                <path d="M10 8 L22 4" stroke="currentColor" strokeWidth="2" />
+                <path d="M10 12 L22 8" stroke="currentColor" strokeWidth="2" />
+              </svg>
+              <span className="text-xl font-bold text-white">usicBuds</span>
+            </div>
           </div>
           
           <div className="flex items-center space-x-4">
