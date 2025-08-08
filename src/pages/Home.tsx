@@ -35,12 +35,14 @@ const Home = () => {
                 width="32" 
                 height="32" 
                 viewBox="0 0 24 24" 
-                className="text-white mr-1"
+                className="text-purple-300 mr-1"
                 fill="currentColor"
               >
-                <path d="M12 2C10.9 2 10 2.9 10 4v8.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V8h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2h-4z" rx="3"/>
-                <circle cx="16" cy="6" r="2"/>
-                <circle cx="18" cy="8" r="2"/>
+                {/* Music note styled M */}
+                <path d="M8 3h8c.55 0 1 .45 1 1v12c0 1.66-1.34 3-3 3s-3-1.34-3-3V8H8c-.55 0-1-.45-1-1s.45-1 1-1z" />
+                <circle cx="6" cy="15" r="3" />
+                <path d="M11 12v4c0 1.66 1.34 3 3 3s3-1.34 3-3-1.34-3-3-3c-.35 0-.69.06-1 .17V12z" />
+                <circle cx="14" cy="16" r="2" />
               </svg>
               <h1 className="text-4xl font-bold">usicBuds</h1>
             </div>
@@ -58,14 +60,14 @@ const Home = () => {
                 value={concert}
                 onChange={(e) => setConcert(e.target.value)}
                 placeholder="e.g. Taylor Swift - MetLife Stadium"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-800"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
             
             <Button
               onClick={handleGetStarted}
               disabled={!concert.trim()}
-              className="w-full bg-green-800 hover:bg-green-900 text-white py-3 text-lg font-semibold rounded-lg"
+              className="w-full bg-primary hover:bg-primary/90 text-white py-3 text-lg font-semibold rounded-lg"
             >
               Find Concert Buds
             </Button>

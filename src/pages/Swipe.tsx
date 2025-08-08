@@ -8,7 +8,7 @@ const Swipe = () => {
   const concert = location.state?.concert || "Your Concert";
 
   return (
-    <div className="min-h-screen bg-green-800">
+    <div className="min-h-screen bg-primary">
       {/* Content */}
       <div className="relative z-10">
         <Header />
