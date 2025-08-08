@@ -29,14 +29,6 @@ MusicBuds is a platform where music lovers can connect, meet, and attend concert
 
 ---
 
-## Customization
-MusicBuds was built using Lovable as a base, but fully customized with:
-- New logo, fonts, and color scheme
-- Unique copywriting and layout
-- Custom images and icons
-- Personalized features tailored to the live music community
-
----
 
 ## Future Plans
 - Mobile app version
