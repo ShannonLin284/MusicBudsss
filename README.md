@@ -1,73 +1,50 @@
-# Welcome to your Lovable project
+# MusicBuds
+*Find your perfect concert buddy.*
 
-## Project info
+MusicBuds is a platform where music lovers can connect, meet, and attend concerts together. Whether you’re hunting for a last-minute ticket partner or looking to make friends who share your music taste, MusicBuds makes finding your next gig buddy effortless.
 
-**URL**: https://lovable.dev/projects/583f87b4-3b7b-4928-a074-049e7d5075db
+---
 
-## How can I edit this code?
+## Features
+- **Discover concert buddies** based on shared artists, genres, and location.
+- **Create or join events** for upcoming shows.
+- **Direct messaging** to coordinate meetup plans.
+- **Personalized recommendations** for concerts near you.
+- **Mobile-friendly** design for on-the-go use.
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## How It Works
+1. **Sign up** and create your profile.
+2. **Match** with people who like the same artists and genres.
+3. **Chat** to plan your concert night.
+4. **Meet up** and enjoy the show together.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/583f87b4-3b7b-4928-a074-049e7d5075db) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## Tech Stack
+- **Frontend:** HTML, CSS, JavaScript (customized from Lovable-generated base)
+- **Backend & Hosting:** Lovable platform
+- **Assets:** Custom branding, imagery, and styling
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Customization
+MusicBuds was built using Lovable as a base, but fully customized with:
+- New logo, fonts, and color scheme
+- Unique copywriting and layout
+- Custom images and icons
+- Personalized features tailored to the live music community
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## Future Plans
+- Mobile app version
+- Group event planning tools
+- Verified profiles for safety
+- Integration with ticketing platforms
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/583f87b4-3b7b-4928-a074-049e7d5075db) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## License
+This project is licensed under the MIT License — see [LICENSE](LICENSE) for details.
