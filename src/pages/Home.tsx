@@ -33,20 +33,16 @@ const Home = () => {
             <div className="flex items-center justify-center mb-4">
               <div className="flex items-end">
                 <svg 
-                  width="26" 
-                  height="32" 
-                  viewBox="0 0 22 28" 
+                  width="24" 
+                  height="30" 
+                  viewBox="0 0 20 26" 
                   className="text-purple-300 mr-1"
                   fill="currentColor"
                 >
-                  {/* Two sixteenth notes with slanted beams forming M */}
-                  <circle cx="4" cy="22" r="3" />
-                  <circle cx="18" cy="22" r="3" />
-                  <rect x="7" y="6" width="1.5" height="16" />
-                  <rect x="18" y="6" width="1.5" height="16" />
-                  {/* Slanted beams */}
-                  <path d="M8.5 6 L19.5 2" stroke="currentColor" strokeWidth="1.5" />
-                  <path d="M8.5 10 L19.5 6" stroke="currentColor" strokeWidth="1.5" />
+                  {/* Clean music note like the reference */}
+                  <ellipse cx="4" cy="20" rx="3.5" ry="2.5" />
+                  <rect x="7.5" y="6" width="2" height="14" />
+                  <path d="M9.5 6 L16 3 L16 5 L9.5 8 Z" />
                 </svg>
                 <h1 className="text-4xl font-bold">usicBuds</h1>
               </div>
