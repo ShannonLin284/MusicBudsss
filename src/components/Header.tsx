@@ -15,18 +15,11 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center cursor-pointer" onClick={() => navigate("/")}>
             <div className="flex items-end">
-              <svg 
-                width="20" 
-                height="26" 
-                viewBox="0 0 20 26" 
-                className="text-purple-300 mr-1"
-                fill="currentColor"
-              >
-                {/* Clean music note like the reference */}
-                <ellipse cx="4" cy="20" rx="3.5" ry="2.5" />
-                <rect x="7.5" y="6" width="2" height="14" />
-                <path d="M9.5 6 L16 3 L16 5 L9.5 8 Z" />
-              </svg>
+              <img 
+                src="/lovable-uploads/bc0b7f4b-935b-49bb-9cae-ceb254beabc3.png"
+                alt="Music note"
+                className="w-5 h-6 mr-1 filter brightness-0 invert opacity-80"
+              />
               <span className="text-xl font-bold text-white">usicBuds</span>
             </div>
           </div>
