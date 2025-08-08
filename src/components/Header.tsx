@@ -14,21 +14,22 @@ const Header = () => {
       <div className="max-w-md mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center cursor-pointer" onClick={() => navigate("/")}>
-            <div className="flex items-baseline">
+            <div className="flex items-end">
               <svg 
-                width="24" 
-                height="32" 
-                viewBox="0 0 24 32" 
-                className="text-purple-300 mr-0"
+                width="22" 
+                height="28" 
+                viewBox="0 0 22 28" 
+                className="text-purple-300 mr-1"
                 fill="currentColor"
               >
-                {/* Sixteenth note with slanted beams forming an M shape */}
-                <circle cx="6" cy="24" r="4" />
-                <circle cx="18" cy="24" r="4" />
-                <path d="M10 24 L10 6 L14 4 L14 24 M18 24 L18 6 L22 4 L22 24" stroke="currentColor" strokeWidth="2" fill="none" />
-                {/* Double beams slanted */}
-                <path d="M10 8 L22 4" stroke="currentColor" strokeWidth="2" />
-                <path d="M10 12 L22 8" stroke="currentColor" strokeWidth="2" />
+                {/* Two sixteenth notes with slanted beams forming M */}
+                <circle cx="4" cy="22" r="3" />
+                <circle cx="18" cy="22" r="3" />
+                <rect x="7" y="6" width="1.5" height="16" />
+                <rect x="18" y="6" width="1.5" height="16" />
+                {/* Slanted beams */}
+                <path d="M8.5 6 L19.5 2" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M8.5 10 L19.5 6" stroke="currentColor" strokeWidth="1.5" />
               </svg>
               <span className="text-xl font-bold text-white">usicBuds</span>
             </div>
