@@ -44,7 +44,7 @@ const Home = () => {
               </div>
             </div>
             <p className="text-xl mb-8">
-              Tired of skipping out on concerts because you don't have a buddy? find ur bud here!
+              Music comes alive when shared. Meet your concert bud today!
             </p>
             
             {/* Concert Input */}
