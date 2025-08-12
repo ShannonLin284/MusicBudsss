@@ -21,7 +21,7 @@ const Header = () => {
               <LogoProcessor
                 originalImagePath="/lovable-uploads/bc0b7f4b-935b-49bb-9cae-ceb254beabc3.png"
                 onProcessed={setProcessedLogoUrl}
-                className="w-[1.2em] h-[1.4em] mr-1 filter brightness-0 invert opacity-80"
+                className="w-[1.4em] h-[1.6em] mr-0 -ml-1 filter brightness-0 invert opacity-80"
                 alt="Music note"
               />
               <span className="text-xl font-bold text-white">usicBuds</span>
