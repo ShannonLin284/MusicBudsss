@@ -37,7 +37,7 @@ const Home = () => {
                 <LogoProcessor
                   originalImagePath="/lovable-uploads/bc0b7f4b-935b-49bb-9cae-ceb254beabc3.png"
                   onProcessed={setProcessedLogoUrl}
-                  className="w-[1.4em] h-[1.6em] mr-0 -ml-2 filter brightness-0 invert opacity-80"
+                  className="w-[1.8em] h-[2.2em] mr-0 -ml-2 filter brightness-0 invert opacity-80"
                   alt="Music note"
                 />
                 <h1 className="text-4xl font-bold">usicBuds</h1>
