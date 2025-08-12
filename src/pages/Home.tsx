@@ -3,9 +3,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
+import LogoProcessor from "@/components/LogoProcessor";
 
 const Home = () => {
   const [concert, setConcert] = useState("");
+  const [processedLogoUrl, setProcessedLogoUrl] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const handleGetStarted = () => {
@@ -32,10 +34,11 @@ const Home = () => {
           <div className="text-center max-w-md">
             <div className="flex items-center justify-center mb-4">
               <div className="flex items-end">
-                <img 
-                  src="/lovable-uploads/bc0b7f4b-935b-49bb-9cae-ceb254beabc3.png"
-                  alt="Music note"
+                <LogoProcessor
+                  originalImagePath="/lovable-uploads/bc0b7f4b-935b-49bb-9cae-ceb254beabc3.png"
+                  onProcessed={setProcessedLogoUrl}
                   className="w-6 h-7 mr-1 filter brightness-0 invert opacity-80"
+                  alt="Music note"
                 />
                 <h1 className="text-4xl font-bold">usicBuds</h1>
               </div>

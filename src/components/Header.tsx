@@ -2,10 +2,13 @@
 import { Home, Search, MessageCircle, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate, useLocation } from "react-router-dom";
+import LogoProcessor from "./LogoProcessor";
+import { useState } from "react";
 
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [processedLogoUrl, setProcessedLogoUrl] = useState<string | null>(null);
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -15,10 +18,11 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center cursor-pointer" onClick={() => navigate("/")}>
             <div className="flex items-end">
-              <img 
-                src="/lovable-uploads/bc0b7f4b-935b-49bb-9cae-ceb254beabc3.png"
-                alt="Music note"
+              <LogoProcessor
+                originalImagePath="/lovable-uploads/bc0b7f4b-935b-49bb-9cae-ceb254beabc3.png"
+                onProcessed={setProcessedLogoUrl}
                 className="w-5 h-6 mr-1 filter brightness-0 invert opacity-80"
+                alt="Music note"
               />
               <span className="text-xl font-bold text-white">usicBuds</span>
             </div>
