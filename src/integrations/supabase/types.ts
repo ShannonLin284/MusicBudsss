@@ -14,7 +14,233 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      artists: {
+        Row: {
+          created_at: string | null
+          genres: string[] | null
+          id: string
+          image_url: string | null
+          name: string
+          spotify_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          genres?: string[] | null
+          id?: string
+          image_url?: string | null
+          name: string
+          spotify_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          genres?: string[] | null
+          id?: string
+          image_url?: string | null
+          name?: string
+          spotify_id?: string | null
+        }
+        Relationships: []
+      }
+      concerts: {
+        Row: {
+          artist_name: string
+          created_at: string | null
+          date_time: string | null
+          id: string
+          image_url: string | null
+          location: string | null
+          name: string
+          ticket_url: string | null
+          venue: string | null
+        }
+        Insert: {
+          artist_name: string
+          created_at?: string | null
+          date_time?: string | null
+          id?: string
+          image_url?: string | null
+          location?: string | null
+          name: string
+          ticket_url?: string | null
+          venue?: string | null
+        }
+        Update: {
+          artist_name?: string
+          created_at?: string | null
+          date_time?: string | null
+          id?: string
+          image_url?: string | null
+          location?: string | null
+          name?: string
+          ticket_url?: string | null
+          venue?: string | null
+        }
+        Relationships: []
+      }
+      matches: {
+        Row: {
+          concert_id: string | null
+          id: string
+          matched_at: string | null
+          user1_id: string
+          user2_id: string
+        }
+        Insert: {
+          concert_id?: string | null
+          id?: string
+          matched_at?: string | null
+          user1_id: string
+          user2_id: string
+        }
+        Update: {
+          concert_id?: string | null
+          id?: string
+          matched_at?: string | null
+          user1_id?: string
+          user2_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "matches_concert_id_fkey"
+            columns: ["concert_id"]
+            isOneToOne: false
+            referencedRelation: "concerts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      messages: {
+        Row: {
+          content: string
+          id: string
+          match_id: string
+          sender_id: string
+          sent_at: string | null
+        }
+        Insert: {
+          content: string
+          id?: string
+          match_id: string
+          sender_id: string
+          sent_at?: string | null
+        }
+        Update: {
+          content?: string
+          id?: string
+          match_id?: string
+          sender_id?: string
+          sent_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "messages_match_id_fkey"
+            columns: ["match_id"]
+            isOneToOne: false
+            referencedRelation: "matches"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          age: number | null
+          bio: string | null
+          created_at: string | null
+          id: string
+          location: string | null
+          name: string
+          profile_picture_url: string | null
+          spotify_connected: boolean | null
+          spotify_user_id: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          age?: number | null
+          bio?: string | null
+          created_at?: string | null
+          id?: string
+          location?: string | null
+          name: string
+          profile_picture_url?: string | null
+          spotify_connected?: boolean | null
+          spotify_user_id?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          age?: number | null
+          bio?: string | null
+          created_at?: string | null
+          id?: string
+          location?: string | null
+          name?: string
+          profile_picture_url?: string | null
+          spotify_connected?: boolean | null
+          spotify_user_id?: string | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_favorite_artists: {
+        Row: {
+          artist_id: string
+          created_at: string | null
+          id: string
+          user_id: string
+        }
+        Insert: {
+          artist_id: string
+          created_at?: string | null
+          id?: string
+          user_id: string
+        }
+        Update: {
+          artist_id?: string
+          created_at?: string | null
+          id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_favorite_artists_artist_id_fkey"
+            columns: ["artist_id"]
+            isOneToOne: false
+            referencedRelation: "artists"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_interested_concerts: {
+        Row: {
+          concert_id: string
+          created_at: string | null
+          id: string
+          user_id: string
+        }
+        Insert: {
+          concert_id: string
+          created_at?: string | null
+          id?: string
+          user_id: string
+        }
+        Update: {
+          concert_id?: string
+          created_at?: string | null
+          id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_interested_concerts_concert_id_fkey"
+            columns: ["concert_id"]
+            isOneToOne: false
+            referencedRelation: "concerts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
