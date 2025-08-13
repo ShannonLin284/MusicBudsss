@@ -1,36 +1,230 @@
 
-import { useState } from "react";
-import { Camera, Edit3, Music, MapPin, Calendar, Plus } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Camera, Edit3, Music, MapPin, Calendar, Plus, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
 import Header from "@/components/Header";
 
 const Profile = () => {
+  const { user, loading, signOut } = useAuth();
+  const navigate = useNavigate();
+  const { toast } = useToast();
   const [isEditing, setIsEditing] = useState(false);
-  const [isConnectedToSpotify, setIsConnectedToSpotify] = useState(false);
   const [profileData, setProfileData] = useState({
-    name: "You",
-    age: 25,
-    location: "Your City",
-    bio: "Music lover looking for concert buddies!",
-    favoriteArtists: ["Artist 1", "Artist 2", "Artist 3"],
-    upcomingConcerts: ["Concert 1", "Concert 2"]
+    name: "",
+    age: null as number | null,
+    location: "",
+    bio: "",
+    spotify_connected: false,
+    favoriteArtists: [] as string[],
+    upcomingConcerts: [] as string[]
   });
+  const [artists, setArtists] = useState<any[]>([]);
+  const [concerts, setConcerts] = useState<any[]>([]);
+  const [artistSearch, setArtistSearch] = useState("");
+  const [concertSearch, setConcertSearch] = useState("");
 
-  const handleSave = () => {
-    setIsEditing(false);
-    // Here you would typically save to a backend
+  useEffect(() => {
+    if (!loading && !user) {
+      navigate("/auth");
+    }
+  }, [user, loading, navigate]);
+
+  useEffect(() => {
+    if (user) {
+      loadProfile();
+      loadArtists();
+      loadConcerts();
+    }
+  }, [user]);
+
+  const loadProfile = async () => {
+    if (!user) return;
+    
+    // Load basic profile first
+    const { data: profile, error } = await supabase
+      .from('profiles')
+      .select('*')
+      .eq('user_id', user.id)
+      .single();
+
+    if (error) {
+      console.error('Error loading profile:', error);
+      return;
+    }
+
+    // Load favorite artists separately
+    const { data: favoriteArtists } = await supabase
+      .from('user_favorite_artists')
+      .select('artists(name)')
+      .eq('user_id', user.id);
+
+    // Load interested concerts separately
+    const { data: interestedConcerts } = await supabase
+      .from('user_interested_concerts')
+      .select('concerts(name)')
+      .eq('user_id', user.id);
+
+    if (profile) {
+      setProfileData({
+        name: profile.name || "",
+        age: profile.age,
+        location: profile.location || "",
+        bio: profile.bio || "",
+        spotify_connected: profile.spotify_connected || false,
+        favoriteArtists: favoriteArtists?.map((fa: any) => fa.artists.name) || [],
+        upcomingConcerts: interestedConcerts?.map((ic: any) => ic.concerts.name) || []
+      });
+    }
+  };
+
+  const loadArtists = async () => {
+    const { data, error } = await supabase
+      .from('artists')
+      .select('*')
+      .order('name');
+    
+    if (!error && data) {
+      setArtists(data);
+    }
+  };
+
+  const loadConcerts = async () => {
+    const { data, error } = await supabase
+      .from('concerts')
+      .select('*')
+      .order('date_time');
+    
+    if (!error && data) {
+      setConcerts(data);
+    }
+  };
+
+  const handleSave = async () => {
+    if (!user) return;
+    
+    try {
+      const { error } = await supabase
+        .from('profiles')
+        .update({
+          name: profileData.name,
+          age: profileData.age,
+          location: profileData.location,
+          bio: profileData.bio
+        })
+        .eq('user_id', user.id);
+
+      if (error) throw error;
+
+      toast({
+        title: "Profile updated",
+        description: "Your profile has been saved successfully.",
+      });
+      setIsEditing(false);
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive"
+      });
+    }
+  };
+
+  const handleSignOut = async () => {
+    const { error } = await signOut();
+    if (!error) {
+      navigate("/");
+    }
   };
 
   const handleSpotifyConnect = () => {
     // In a real app, this would trigger Spotify OAuth flow
-    setIsConnectedToSpotify(true);
-    console.log("Connecting to Spotify...");
+    toast({
+      title: "Spotify Integration",
+      description: "Spotify integration will be available soon!",
+    });
   };
 
-  const handleSpotifyDisconnect = () => {
-    setIsConnectedToSpotify(false);
-    console.log("Disconnecting from Spotify...");
+  const addArtist = async (artistName: string) => {
+    if (!user) return;
+    
+    const artist = artists.find(a => a.name.toLowerCase() === artistName.toLowerCase());
+    if (!artist) return;
+
+    try {
+      const { error } = await supabase
+        .from('user_favorite_artists')
+        .insert({
+          user_id: user.id,
+          artist_id: artist.id
+        });
+
+      if (error && !error.message.includes('duplicate')) throw error;
+      
+      setProfileData(prev => ({
+        ...prev,
+        favoriteArtists: [...prev.favoriteArtists, artist.name]
+      }));
+      setArtistSearch("");
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive"
+      });
+    }
   };
+
+  const addConcert = async (concertName: string) => {
+    if (!user) return;
+    
+    const concert = concerts.find(c => c.name.toLowerCase() === concertName.toLowerCase());
+    if (!concert) return;
+
+    try {
+      const { error } = await supabase
+        .from('user_interested_concerts')
+        .insert({
+          user_id: user.id,
+          concert_id: concert.id
+        });
+
+      if (error && !error.message.includes('duplicate')) throw error;
+      
+      setProfileData(prev => ({
+        ...prev,
+        upcomingConcerts: [...prev.upcomingConcerts, concert.name]
+      }));
+      setConcertSearch("");
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive"
+      });
+    }
+  };
+
+  const filteredArtists = artists.filter(artist =>
+    artist.name.toLowerCase().includes(artistSearch.toLowerCase())
+  );
+
+  const filteredConcerts = concerts.filter(concert =>
+    concert.name.toLowerCase().includes(concertSearch.toLowerCase())
+  );
+
+  if (loading) {
+    return <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="text-lg">Loading...</div>
+    </div>;
+  }
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -42,14 +236,25 @@ const Profile = () => {
           <div className="bg-white rounded-lg p-6 mb-6 shadow-sm">
             <div className="flex items-center justify-between mb-4">
               <h1 className="text-2xl font-bold text-gray-900">My Profile</h1>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsEditing(!isEditing)}
-              >
-                <Edit3 className="h-4 w-4 mr-2" />
-                {isEditing ? "Cancel" : "Edit"}
-              </Button>
+              <div className="flex space-x-2">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setIsEditing(!isEditing)}
+                >
+                  <Edit3 className="h-4 w-4 mr-2" />
+                  {isEditing ? "Cancel" : "Edit"}
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleSignOut}
+                  className="text-red-600 hover:text-red-700"
+                >
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Sign Out
+                </Button>
+              </div>
             </div>
 
             {/* Profile Picture */}
@@ -82,8 +287,8 @@ const Profile = () => {
                   />
                   <input
                     type="number"
-                    value={profileData.age}
-                    onChange={(e) => setProfileData({...profileData, age: parseInt(e.target.value)})}
+                    value={profileData.age || ""}
+                    onChange={(e) => setProfileData({...profileData, age: e.target.value ? parseInt(e.target.value) : null})}
                     className="w-full p-2 border border-gray-300 rounded-lg"
                     placeholder="Your age"
                   />
@@ -103,7 +308,7 @@ const Profile = () => {
                 </>
               ) : (
                 <>
-                  <h2 className="text-xl font-semibold text-center">{profileData.name}, {profileData.age}</h2>
+                  <h2 className="text-xl font-semibold text-center">{profileData.name}{profileData.age ? `, ${profileData.age}` : ""}</h2>
                   <div className="flex items-center justify-center text-gray-600">
                     <MapPin className="h-4 w-4 mr-1" />
                     <span>{profileData.location}</span>
@@ -125,27 +330,16 @@ const Profile = () => {
                 </div>
                 <h3 className="text-lg font-semibold">Spotify</h3>
               </div>
-              {isConnectedToSpotify ? (
-                <Button 
-                  size="sm" 
-                  variant="outline"
-                  onClick={handleSpotifyDisconnect}
-                  className="text-red-600 border-red-300 hover:bg-red-50"
-                >
-                  Disconnect
-                </Button>
-              ) : (
-                <Button 
-                  size="sm"
-                  onClick={handleSpotifyConnect}
-                  className="bg-green-600 hover:bg-green-700"
-                >
-                  Connect
-                </Button>
-              )}
+              <Button 
+                size="sm"
+                onClick={handleSpotifyConnect}
+                className="bg-green-600 hover:bg-green-700"
+              >
+                {profileData.spotify_connected ? "Connected" : "Connect"}
+              </Button>
             </div>
             <p className="text-sm text-gray-600">
-              {isConnectedToSpotify 
+              {profileData.spotify_connected 
                 ? "Your Spotify account is connected! We can now show your music taste to potential concert buddies."
                 : "Connect your Spotify account to automatically sync your favorite artists and show your music taste to others."
               }
@@ -160,9 +354,28 @@ const Profile = () => {
                 <h3 className="text-lg font-semibold">Favorite Artists</h3>
               </div>
               {isEditing && (
-                <Button size="sm" variant="outline">
-                  <Plus className="h-4 w-4" />
-                </Button>
+                <div className="relative">
+                  <input
+                    type="text"
+                    value={artistSearch}
+                    onChange={(e) => setArtistSearch(e.target.value)}
+                    placeholder="Search artists..."
+                    className="text-sm p-2 border border-gray-300 rounded-lg w-48"
+                  />
+                  {artistSearch && (
+                    <div className="absolute top-full left-0 right-0 bg-white border border-gray-300 rounded-lg mt-1 max-h-32 overflow-y-auto z-10">
+                      {filteredArtists.slice(0, 5).map((artist) => (
+                        <div
+                          key={artist.id}
+                          onClick={() => addArtist(artist.name)}
+                          className="p-2 hover:bg-gray-100 cursor-pointer text-sm"
+                        >
+                          {artist.name}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               )}
             </div>
             <div className="flex flex-wrap gap-2">
@@ -182,9 +395,28 @@ const Profile = () => {
                 <h3 className="text-lg font-semibold">Want to Go To</h3>
               </div>
               {isEditing && (
-                <Button size="sm" variant="outline">
-                  <Plus className="h-4 w-4" />
-                </Button>
+                <div className="relative">
+                  <input
+                    type="text"
+                    value={concertSearch}
+                    onChange={(e) => setConcertSearch(e.target.value)}
+                    placeholder="Search concerts..."
+                    className="text-sm p-2 border border-gray-300 rounded-lg w-48"
+                  />
+                  {concertSearch && (
+                    <div className="absolute top-full left-0 right-0 bg-white border border-gray-300 rounded-lg mt-1 max-h-32 overflow-y-auto z-10">
+                      {filteredConcerts.slice(0, 5).map((concert) => (
+                        <div
+                          key={concert.id}
+                          onClick={() => addConcert(concert.name)}
+                          className="p-2 hover:bg-gray-100 cursor-pointer text-sm"
+                        >
+                          {concert.name}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               )}
             </div>
             <div className="space-y-3">
@@ -193,6 +425,11 @@ const Profile = () => {
                   <span className="text-sm text-gray-700 font-medium">{concert}</span>
                 </div>
               ))}
+              {profileData.upcomingConcerts.length === 0 && (
+                <p className="text-gray-500 text-sm text-center py-4">
+                  {isEditing ? "Search and add concerts you want to attend" : "No concerts added yet"}
+                </p>
+              )}
             </div>
           </div>
 

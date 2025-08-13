@@ -1,7 +1,9 @@
 
 import { useState } from "react";
+import { ArrowRight, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 import Header from "@/components/Header";
 import LogoProcessor from "@/components/LogoProcessor";
 
@@ -9,6 +11,7 @@ const Home = () => {
   const [concert, setConcert] = useState("");
   const [processedLogoUrl, setProcessedLogoUrl] = useState<string | null>(null);
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   const handleGetStarted = () => {
     if (concert.trim()) {
@@ -61,13 +64,24 @@ const Home = () => {
               />
             </div>
             
-            <Button
-              onClick={handleGetStarted}
-              disabled={!concert.trim()}
-              className="w-full bg-primary hover:bg-primary/90 text-white py-3 text-lg font-semibold rounded-lg"
-            >
-              Find Concert Buds
-            </Button>
+            {user ? (
+              <Button
+                onClick={handleGetStarted}
+                disabled={!concert.trim()}
+                className="w-full bg-primary hover:bg-primary/90 text-white py-3 text-lg font-semibold rounded-lg"
+              >
+                Find Concert Buds
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            ) : (
+              <Button
+                onClick={() => navigate("/auth")}
+                className="w-full bg-primary hover:bg-primary/90 text-white py-3 text-lg font-semibold rounded-lg"
+              >
+                <LogIn className="mr-2 h-5 w-5" />
+                Sign Up / Sign In to Find Buds
+              </Button>
+            )}
           </div>
         </div>
       </div>

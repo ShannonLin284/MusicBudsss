@@ -9,6 +9,7 @@ import Swipe from "./pages/Swipe";
 import Messages from "./pages/Messages";
 import DirectMessage from "./pages/DirectMessage";
 import Profile from "./pages/Profile";
+import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/messages" element={<Messages />} />
           <Route path="/direct-message" element={<DirectMessage />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/auth" element={<Auth />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
